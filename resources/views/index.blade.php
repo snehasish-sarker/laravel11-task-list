@@ -7,6 +7,7 @@
     <ul>
         <li>
             <a href="{{ route('tasks.show', ['id'=>$task->id]) }}">{{ $task->title }}</a>
+            <a href="{{ route('tasks.edit', ['id'=>$task->id]) }}">Edit</a>
         </li>
     </ul>
 
