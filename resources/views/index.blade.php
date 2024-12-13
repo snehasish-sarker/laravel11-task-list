@@ -3,26 +3,22 @@
 @section('title', 'List of task')
 
 @section('content')
-    <a href="{{ route('tasks.create') }}"> Create New Task</a>
+    <nav class="mb-4">
+        <a href="{{ route('tasks.create') }}" class="link">Add Task!</a>
+    </nav>
 @forelse($tasks as $task)
     <ul>
         <li>
-            <a href="{{ route('tasks.show', ['task'=>$task->id]) }}">{{ $task->title }}</a>
-            <a href="{{ route('tasks.edit', ['task'=>$task->id]) }}">Edit</a>
-            <form action="{{ route('tasks.destroy', ['task'=>$task->id]) }}" method="post">
-                @csrf
-                @method('DELETE')
-                <button type="submit">
-                    Delete
-                </button>
-            </form>
+            <a href="{{ route('tasks.show', ['task' => $task->id]) }}"
+               @class(['line-through' => $task->completed])>{{ $task->title }}
+            </a>
         </li>
     </ul>
 @empty
     <p>No List</p>
 @endforelse
     @if($tasks->count())
-    <nav>
+    <nav class="mt-4">
         {{ $tasks->links() }}
     </nav>
     @endif
