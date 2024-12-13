@@ -8,6 +8,13 @@
         <li>
             <a href="{{ route('tasks.show', ['task'=>$task->id]) }}">{{ $task->title }}</a>
             <a href="{{ route('tasks.edit', ['task'=>$task->id]) }}">Edit</a>
+            <form action="{{ route('tasks.destroy', ['task'=>$task->id]) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit">
+                    Delete
+                </button>
+            </form>
         </li>
     </ul>
 
