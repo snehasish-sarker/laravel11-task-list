@@ -17,8 +17,12 @@
             </form>
         </li>
     </ul>
-
 @empty
     <p>No List</p>
 @endforelse
+    @if($tasks->count())
+    <nav>
+        {{ $tasks->links() }}
+    </nav>
+    @endif
 @endsection
